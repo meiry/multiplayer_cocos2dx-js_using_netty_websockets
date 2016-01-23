@@ -21,7 +21,7 @@ public class GameServerInitializer extends ChannelInitializer<Channel> {
         pipeline.addLast("HttpServerCodec",new HttpServerCodec());
         pipeline.addLast("HttpObjectAggregator",new HttpObjectAggregator(64 * 1024));
         pipeline.addLast("ChunkedWriteHandler",new ChunkedWriteHandler());
-        pipeline.addLast("HttpRequestHandler",new HttpRequestHandler("/ws"));
+        
         pipeline.addLast("WebSocketServerProtocolHandler",new WebSocketServerProtocolHandler("/ws"));
         
         pipeline.addLast("TextWebSocketFrameHandler",new TextWebSocketFrameHandler(gameManager,
